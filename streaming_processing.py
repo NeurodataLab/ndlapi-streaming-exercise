@@ -134,7 +134,7 @@ class IWebCamStreamProcessing:
 
 class WebCamFaceDetectorStreamProcessing(IWebCamStreamProcessing):
     def visualize_result(self, image, res=None):
-        # Check res is normal format
+        # Check res has normal format
         if res is not None and len(res) > 0:
             # Visualize each faces in result
             for face in res[0]:
