@@ -47,7 +47,21 @@ More information about usage and results structure available in
 ### Streaming exercise
 
 The main goal of this exercise is to learn how to use NDL API
-capabilities to create real-time video processing program.
+capabilities to create real-time video processing program. There is an
+example in this git which can handle webcam stream, processed images
+via Face Detector service and visualize results.
+
+We suggest that you come up what functionality you want to implement,
+but we also have several examples sorted in increasing order of complexity:
+
+1. Change Face Detector service to Emotion Recognition service and visualize
+every face and emotions on image
+2. With Emotion Recognition service detects all faces and emotions and
+change happy faces to smiling emoticons, sad faces to sad emoticons etc.
+3. Process and visualize several services simultaneously,
+i.e. Face Detector + Person Detector
+4. Create tool for collecting statistics of emotions,
+gender and age for all people near the camera
 
 You can choose one of several services which could work
 with streaming requests. Note, that some services are working slower
@@ -58,4 +72,3 @@ than others. Available services are:
 * Satisfaction Index (~ 10 frames per second)
 * Sex & Age Detector (~ 10 frames per second)
 * Body pose estimation (~ 5 frames per second)
-
