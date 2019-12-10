@@ -89,7 +89,7 @@ class IWebCamStreamProcessing:
         response_iterating_process.start()
 
         # Last processed result
-        last_result = None
+        last_result, wait_for_result = None, False
         # Open webcam stream
         cap = cv2.VideoCapture(0)
         # Get first frame from webcam stream
@@ -98,12 +98,14 @@ class IWebCamStreamProcessing:
         # Check that webcam works normally and nobody stopped the system
         while ret and not self.stop_event.is_set():
             # Check if last putted images already processed
-            if self.images_queue.empty():
+            if self.images_queue.empty() and not wait_for_result:
                 self.images_queue.put(frame)
+                wait_for_result = True
 
             # Check if there is new processing result
             if not self.result_queue.empty():
                 last_result = self.result_queue.get()
+                wait_for_result = False
 
             # Visualize result on frame
             vis_frame = self.visualize_result(frame, last_result)
