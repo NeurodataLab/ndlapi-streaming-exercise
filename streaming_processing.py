@@ -60,6 +60,11 @@ class IWebCamStreamProcessing:
         try:
             # Do until service stop processing
             for response in self.service.process_stream():
+                # Check response status
+                if response[1] is None:
+                    print(response[2])
+                    continue
+
                 # Get result and translate it to the correct format
                 result = {i: json.loads(image_res.result) for i, image_res in enumerate(response[1])}
                 processed_result = self.service._postprocess_result(result)
